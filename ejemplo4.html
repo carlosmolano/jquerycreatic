@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>Selectores</h1>
-
+    <h2 id="nombrepais"></h2>
     <select id="paisesI">
         <option value="value1">Value 1</option> 
         <option value="value2" selected>Value 2</option>
@@ -33,6 +33,17 @@
             sel.empty();
             $.each(paises, function(key, pais){
                 sel.append('<option value="'+ pais.codigo +'">'+pais.nombre+'</option> ');
+            });
+
+            sel.change(function(){
+                //console.log($(this).text());
+                var valor = $(this).val();
+                $.each(paises,function(key, pais){
+                    if(pais.codigo==valor){
+                        console.log(pais.nombre);
+                        $('#nombrepais').text(pais.nombre);
+                    }
+                });
             });
         });
     </script>
