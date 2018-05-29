@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Departamentos y municipios</h1>
+    <h2 id="nombrepais"></h2>
+    <div>
+        <label for="">Departamentos</label>
+        <select id="departamentos">
+            <option value="value1">Prueba</option> 
+        </select>
+    </div>
+    <div>
+        <label for="">Municipios</label>
+        <select id="municipios">
+            <option value="value1">Prueba</option> 
+        </select>
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        var departamentos=[
+            {codigo: 1, nombre: "Cauca"},
+            {codigo: 2, nombre: "Antioquia"},
+            {codigo: 3, nombre: "Valle"}];
+        var municipios=[
+            {codigo: 1, coddep:1, municipio: "Popayán"},
+            {codigo: 2, coddep:1, municipio: "Timbio"},
+            {codigo: 3, coddep:1, municipio: "El Tambo"},
+            {codigo: 4, coddep:2, municipio: "Medellin"},
+            {codigo: 5, coddep:2, municipio: "Bello"},
+            {codigo: 6, coddep:2, municipio: "Itagui"},
+            {codigo: 7, coddep:3, municipio: "Cali"},
+            {codigo: 8, coddep:3, municipio: "Roldanillo"},
+            {codigo: 9, coddep:3, municipio: "Buga"},];
+        
+        $(function(){//Ready
+           var dep = $('#departamentos');
+           dep.empty();
+           $.each(departamentos,function(index,item){
+               dep.append('<option value="'+item.codigo+'">'+item.nombre+'</option>');
+           });
+           
+           dep.change(function(){
+                var coddept = $(this).val();
+                var munF = $.grep(municipios, function(muni,index){
+                    return muni.coddep==coddept; //Filtramos los municipios
+                });
+
+                var munic = $('#municipios');
+                munic.empty();
+                $.each(munF,function(i,itemM){
+                    munic.append('<option value="'+itemM.codigo+'">'+itemM.municipio+'</option>');
+                });
+                //console.log(mun);
+           });
+           
+
+        });
+    </script>
+</body>
+</html>
