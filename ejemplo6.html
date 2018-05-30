@@ -22,6 +22,9 @@
                         <th>
                             Nombre
                         </th>
+                        <th>
+                            Ver
+                        </th>
                     </tr>
                 </thead>
                 <tbody id="jugadores">
@@ -30,7 +33,7 @@
             </table>
         </div>
         <div class="col-md-6">
-            <p>Hola 2</p>
+            <p id="codigo">Hola 2</p>
         </div>
     </div>
     
@@ -57,26 +60,20 @@
             {codigo: 1, nombre: "James Rodrigues"},
             {codigo: 2, nombre: "Falcao"},
             {codigo: 3, nombre: "Mina"}];
-        var ficha=[
-            {codigo: 1, coddep:1, municipio: "Popayán"},
-            {codigo: 2, coddep:1, municipio: "Timbio"},
-            {codigo: 3, coddep:1, municipio: "El Tambo"},
-            {codigo: 4, coddep:2, municipio: "Medellin"},
-            {codigo: 5, coddep:2, municipio: "Bello"},
-            {codigo: 6, coddep:2, municipio: "Itagui"},
-            {codigo: 7, coddep:3, municipio: "Cali"},
-            {codigo: 8, coddep:3, municipio: "Roldanillo"},
-            {codigo: 9, coddep:3, municipio: "Buga"},];
+       
         $(function(){//Ready
             var jug= $("#jugadores");
             jug.empty();
             $.each(jugadores, function(i,item){
                 //console.log(item);
-                var j = "<tr><td>"+item.codigo+"</td><td>"+item.nombre+"</td></tr>";
+                var j = "<tr><td>"+item.codigo+"</td><td>"+item.nombre+"</td><td><button data-codigo='"+item.codigo+"' class='algo'>Ver algo</button></td></tr>";
                 jug.append(j);
             })
             console.log(jugadores);
-
+            $('.algo').on('click', function(){
+                //alert($(this).data("id"));
+                $("#codigo").text($(this).data("codigo"));
+            });
         });
 
     </script>
