@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Departamentos y municipios</h1>
+    <h2 id="nombrepais"></h2>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Numero
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="jugadores">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <p>Hola 2</p>
+        </div>
+    </div>
+    
+    <div>
+        <label for="">Departamentos</label>
+        <select id="departamentos">
+            <option value="value1">Prueba</option> 
+        </select>
+    </div>
+    <div>
+        <label for="">Municipios</label>
+        <select id="municipios">
+            <option value="value1">Prueba</option> 
+        </select>
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    
+        var jugadores=[
+            {codigo: 1, nombre: "James Rodrigues"},
+            {codigo: 2, nombre: "Falcao"},
+            {codigo: 3, nombre: "Mina"}];
+        var ficha=[
+            {codigo: 1, coddep:1, municipio: "Popayán"},
+            {codigo: 2, coddep:1, municipio: "Timbio"},
+            {codigo: 3, coddep:1, municipio: "El Tambo"},
+            {codigo: 4, coddep:2, municipio: "Medellin"},
+            {codigo: 5, coddep:2, municipio: "Bello"},
+            {codigo: 6, coddep:2, municipio: "Itagui"},
+            {codigo: 7, coddep:3, municipio: "Cali"},
+            {codigo: 8, coddep:3, municipio: "Roldanillo"},
+            {codigo: 9, coddep:3, municipio: "Buga"},];
+        $(function(){//Ready
+            var jug= $("#jugadores");
+            jug.empty();
+            $.each(jugadores, function(i,item){
+                //console.log(item);
+                var j = "<tr><td>"+item.codigo+"</td><td>"+item.nombre+"</td></tr>";
+                jug.append(j);
+            })
+            console.log(jugadores);
+
+        });
+
+    </script>
+</body>
+</html>
