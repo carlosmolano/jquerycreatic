@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>The Star Wars API</h1>
+    <h2 id="nombrepais"></h2>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Codigo
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Ver
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tablepeople">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <img id="imgpeople" src="" alt="" width="50%">
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    
+        var peoples = [];
+        var imagenes = [{codigo:0, url:"https://vignette.wikia.nocookie.net/es.starwars/images/2/20/LukeTLJ.jpg/revision/latest?cb=20171031044632"},
+            {codigo:1, url:"https://pm1.narvii.com/6318/816eaf055607e8a92ec5cf9c89fca9247153e724_hq.jpg"},
+            {codigo:2, url:"https://pm1.narvii.com/6318/816eaf055607e8a92ec5cf9c89fca9247153e724_hq.jpg"},
+            {codigo:3, url:"https://vignette.wikia.nocookie.net/es.starwars/images/e/eb/ArtooTFA2-Fathead.png/revision/latest?cb=20150926172435"},
+            {codigo:4, url:"http://www.figures.cz/detail/01/2388b-big.jpg"},
+            {codigo:5, url:"https://lasdaoalplay.com/wp-content/uploads/2015/07/leia-princess-leia-organa-solo-skywalker-9301324-449-661.jpg"},
+            {codigo:6, url:"https://blog.stylingandroid.com/wp-content/themes/lontano-pro/images/no-image-slide.png"},
+            {codigo:7, url:"https://blog.stylingandroid.com/wp-content/themes/lontano-pro/images/no-image-slide.png"},
+            {codigo:8, url:"https://blog.stylingandroid.com/wp-content/themes/lontano-pro/images/no-image-slide.png"},
+            {codigo:9, url:"https://blog.stylingandroid.com/wp-content/themes/lontano-pro/images/no-image-slide.png"},
+        ];
+       
+        $(function(){//Ready
+           $.ajax({
+                type: "GET",
+                url: "https://swapi.co/api/people/",
+                dataType: "json"
+           }).done(function(data){
+                console.log(data);
+                peoples = data.results;
+                var tablapeople = $("#tablepeople");
+                tablapeople.empty();
+                $.each(peoples,function(index,people){
+                    var trp="<tr><td>"+index+"</td><td>"+people.name+"</td><td><button data-name='"+people.name+"' data-codigo='"+index+"' class='botonver'>Ver ficha</button></td></tr>";;
+                    tablapeople.append(trp);
+                })
+                $(".botonver").on('click',function(){
+                    var cod=$(this).data('codigo');
+                    console.log($(this).data('name'));
+                    var imgreturn = $.grep(imagenes, function(img,index){
+                        return img.codigo==cod;
+                    });
+                    $("#imgpeople").attr('src',imgreturn[0].url);
+                    console.log(imgreturn);
+
+                });
+
+           }).fail(function(){
+               alert("Error...")
+           })
+        });
+
+    </script>
+</body>
+</html>
