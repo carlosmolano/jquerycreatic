@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TvFind - Creatic Academy</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <style>
+    /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }
+   label {
+       color: #fff;
+   }
+    </style>
+</head>
+
+<body>
+    <div class="block">
+        <nav class="pink darken-4">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">TvFind 👁 Creatic Academy</a>
+                
+            </div>
+        </nav>
+        <div id="loader" class="progress">
+                <div class="indeterminate"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">search</i>
+                    <input id="icon_prefix" type="text" class="buscar validate text-lighten-4">
+                    <label class="text-indigo darken-4" for="icon_prefix">Find Shows</label>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div id="shows" class="row">
+
+            </div>
+        </div>
+        <footer class="page-footer pink darken-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Tv Finder - Creatic Academy</h5>
+                        <p class="grey-text text-lighten-4">Curso jQuery</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li>
+                                <a class="grey-text text-lighten-3" href="http://clustercreatic.com/es/">Corporación Cluster Creatic</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 Copyright - Carlos A. Molano
+                    <a class="grey-text text-lighten-4 right" href="#!">Jedi👨🏻‍💻</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/apitv.js"></script>
+</body>
+
+</html>
