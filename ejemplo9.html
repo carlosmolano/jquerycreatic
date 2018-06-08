@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>The Star Wars API</h1>
+    <b></b>
+    <div class="row">
+        <button id="btnatras">Atras</button>
+        <button id="btnsiguiente">Siguiente</button>
+    </div>
+    <h2 id="nombrepais"></h2>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Codigo
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Ver
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tablepeople">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <img id="imgpeople" src="" alt="" width="50%">
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        var grupos=[];
+        $(function(){//Ready
+
+           $.ajax({
+                headers: { 'X-Auth-Token': '30a19d81b62c4dae83629c37649c3778 ' },
+                url: 'http://api.football-data.org/v1/competitions/467/leagueTable',
+               type: "GET",
+               dataType: "json",
+           }).done(function(data){
+               console.log(data);
+               var auxgrupo = data.standings;
+               grupos = [auxgrupo.A,auxgrupo.B,auxgrupo.C];
+               $.each(grupos,function(index,grupo){
+                   //console.log(item);
+                    $.each(grupo,function(i,g){
+                        console.log(g.team);
+                    })
+               });
+           });
+        });
+        
+    </script>
+</body>
+</html>

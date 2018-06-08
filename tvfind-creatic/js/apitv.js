@@ -6,6 +6,7 @@ var getshows = function(){};
 var rendershows = function(){};
 var findShows = function(){};
 var renderShowsFind = function(){};
+var find = true;
 var temS= `<div class="col s3">
     <div class="card large hoverable">
       <div class="card-image">
@@ -28,12 +29,16 @@ $(function () {
             findShows($(this).val());
         }
     });
+    
     $(document).ajaxStart(function(){
         $("#loader").css("display", "block");
+        $("#loader2").show();
     });
     $(document).ajaxComplete(function(){
         $("#loader").css("display", "none");
+        $("#loader2").hide();
     });
+    detalle
 });
 //
 findShows = function(search){
